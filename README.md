@@ -71,3 +71,5 @@ export default defineConfig([
   },
 ])
 ```
+
+rodando npm install + npm install react-hook-form zod @hookform/resolvers
