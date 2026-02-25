@@ -2,6 +2,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useEffect, useState } from "react"
 import { useForm, type Resolver } from "react-hook-form"
 import * as z from 'zod'
+import { ButtonCadastrar } from "../../assets/components/buttonCadastrar";
+import { ButtonLimpar } from "../../assets/components/buttonLimpar";
 
 import { NavLink } from "react-router-dom";
 
@@ -83,7 +85,7 @@ export function MoneyFlow() {
 
                     </div>
                     <div className="flex justify-end mt-5">
-                    <button className="border border-zinc-400 px-4 py-1 bg-zinc-800 text-white cursor-pointer" type="submit">Cadastrar</button>
+                    <ButtonCadastrar />
 
                     </div>
                     </form>

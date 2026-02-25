@@ -3,6 +3,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import * as z from 'zod'
+import { ButtonCadastrar } from "../../assets/components/buttonCadastrar";
+import { ButtonLimpar } from "../../assets/components/buttonLimpar";
 
 export function ConnectHub() {
     const [cliente, setCliente] = useState<TypeForm[]>([])
@@ -55,8 +57,8 @@ export function ConnectHub() {
                                 </div>
                             </div>
                             <div className="flex justify-end gap-4 mt-6">
-                                <button className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition font-medium" type="reset">Limpar</button>
-                                <button className="border border-zinc-400 px-4 py-1 bg-zinc-800 text-white" type="submit">Cadastrar</button>
+                                <ButtonLimpar />
+                                <ButtonCadastrar />
                             </div>
                         </form>
                     </div>

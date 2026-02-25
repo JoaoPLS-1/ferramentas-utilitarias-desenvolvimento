@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import { useForm, type Resolver } from 'react-hook-form'
 import * as z from 'zod'
 import { LuCheck, LuTrash } from 'react-icons/lu'
+import { ButtonCadastrar } from "../../assets/components/buttonCadastrar";
+import { ButtonLimpar } from "../../assets/components/buttonLimpar";
 export function TaskMaster() {
     const [tarefas, setTarefas] = useState<TypeForm[]>([]);
     useEffect(() => {
@@ -86,8 +88,8 @@ export function TaskMaster() {
                                 )}
                             </div>
                             <div className="flex gap-4 justify-end mt-4">
-                                <button type="reset" className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition font-medium">Reset</button>
-                                <button className="border border-zinc-400 px-4 py-1 bg-zinc-800 text-white">Enviar</button>
+                                <ButtonLimpar />
+                                <ButtonCadastrar />
                             </div>
                         </form>
                     </div>
