@@ -1,75 +1,101 @@
-# React + TypeScript + Vite
+# Portal de Ferramentas Utilitárias
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Visão do Produto
 
-Currently, two official plugins are available:
+O Portal de Ferramentas Utilitárias é uma aplicação web desenvolvida com o objetivo de reunir ferramentas simples e práticas para organização pessoal e controle de informações. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O sistema permite ao utilizador:
 
-## React Compiler
+- Organizar tarefas diárias
+- Cadastrar contactos
+- Controlar entradas e saídas financeiras
+- Visualizar saldo atualizado automaticamente
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+A aplicação foi construída com foco em tipagem forte, validação de dados e persistência local, garantindo que as informações permaneçam salvas mesmo após o recarregamento da página.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Stack Tecnológica
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **React (Vite) + TypeScript**
+- **TailwindCSS**
+- **React Hook Form**
+- **Zod + @hookform/resolvers**
+- **React Router Dom**
+- **LocalStorage API**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📂 Estrutura do Projeto
+
+```
+src/
+├── components/   # Componentes reutilizáveis (Button, Header, Navbar)
+├── pages/        # Páginas principais (Home, TaskMaster, ConnectHub, MoneyFlow)
+└── App.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📍 Módulos da Aplicação
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 🏠 Home
+Página inicial com navegação para os três módulos principais.
 
-rodando npm install + npm install react-hook-form zod @hookform/resolvers
+---
+
+### ✅ TaskMaster (ToDo List)
+- Adição de tarefas
+- Listagem dinâmica
+- Remoção de tarefas
+- Marcação como concluída
+- Persistência automática no localStorage
+- Validação: Título mínimo de 5 caracteres
+
+---
+
+### 📇 ConnectHub (Cadastro de Contatos)
+- Cadastro de nome completo
+- Validação de e-mail
+- Validação de telefone (apenas números)
+- Persistência opcional no localStorage
+
+---
+
+### 💰 MoneyFlow (Controle Financeiro)
+- Registro de entradas e saídas
+- Validação de valor positivo
+- Cálculo automático do saldo total
+- Persistência no localStorage
+
+---
+
+## 📈 Metodologias Ágeis
+
+Este projeto foi estruturado simulando uma Sprint real, incluindo:
+
+- Definição de User Stories (Issues)
+- Critérios de Aceitação
+- Organização por Milestones
+- Planejamento incremental das funcionalidades
+
+---
+
+## 🎯 Objetivo Acadêmico
+
+O projeto tem como objetivo consolidar conhecimentos em:
+
+- Componentização
+- Tipagem com TypeScript
+- Validação de formulários
+- Persistência de dados
+- Organização de projeto
+- Planejamento ágil
+
+###Créditos
+
+Feito por João Pedro Luciano da Silva
+
+---
+
+Desenvolvido para fins acadêmicos.
