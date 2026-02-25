@@ -12,21 +12,21 @@ export function Home() {
 
             <div className="flex ">
            
-            <NavLink className='text-black text-4xl font-semi no-underline bg-zinc-400 rounded-2xl w-64 h-32 flex items-center justify-center flex-col' to={'/taskMaster'}>TaskMaster
+            <NavLink className='text-black text-4xl font-semi no-underline bg-blue-500 rounded-2xl w-64 h-32 flex items-center justify-center flex-col' to={'/taskMaster'}>TaskMaster
             <p className="text-xs mt-2 text-black font-bold">Adição, listagem e remoção de tarefas</p>
             </NavLink>
 
             </div>
             <div className="flex ">
             
-            <NavLink className='text-black text-4xl font-semi no-underline bg-zinc-400 rounded-2xl w-64 h-32 flex items-center justify-center flex-col' to={'/connectHub'}>ConnectHub
+            <NavLink className='text-black text-4xl font-semi no-underline bg-blue-500 rounded-2xl w-64 h-32 flex items-center justify-center flex-col' to={'/connectHub'}>ConnectHub
             <p className="text-xs mt-2 text-black font-bold">Conexão entre usuários</p>
             </NavLink>
 
             </div>
             <div className="flex ">
             
-            <NavLink className='text-black text-4xl font-semi no-underline bg-zinc-400 rounded-2xl w-64 h-32 flex items-center justify-center flex-col' to={'/moneyFlow'}>MoneyFlow
+            <NavLink className='text-black text-4xl font-semi no-underline bg-blue-500 rounded-2xl w-64 h-32 flex items-center justify-center flex-col' to={'/moneyFlow'}>MoneyFlow
             <p className="text-xs mt-2 text-black font-bold">Controle de fluxo financeiro</p>
             </NavLink>
 

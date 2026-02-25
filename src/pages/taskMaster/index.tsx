@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, type Resolver } from 'react-hook-form'
 import * as z from 'zod'
 import { LuCheck, LuTrash } from 'react-icons/lu'
 export function TaskMaster() {
@@ -16,14 +16,14 @@ export function TaskMaster() {
     }, [])
 
     const regrasTarefas = z.object({
-        titulo: z.string().min(5, 'Mínimo 5 caracteres.'),
-        categoria: z.string().min(3, 'Minimo 3 caracteres.'),
+        titulo: z.string().min(5,'Campo origatório.' ),
+        categoria: z.string().min(3, 'Campo origatório.'),
         id: z.string().optional(),
         concluido: z.boolean().optional()
     })
     type TypeForm = z.infer<typeof regrasTarefas>
     const formulario = useForm<TypeForm>({
-        resolver: zodResolver(regrasTarefas)
+        resolver: zodResolver(regrasTarefas) as Resolver<TypeForm>
     })
     function submeterTarefa(camposTarefas: TypeForm) {
 
@@ -64,44 +64,50 @@ export function TaskMaster() {
 
     return (
         <>
-            <div className="w-full h-screen flex items-center justify-center flex-col">
-                <div className="w-full max-w-xl bg-white shadow rounded-2xl p-6 mt-6 flex flex-col gap-4">
-                <h1 className="text-4xl text-center">Página de Controle de Tarefas</h1>
-                <form onSubmit={formulario.handleSubmit(submeterTarefa)} className="flex flex-col gap-4">
-                    <div className="flex flex-col relative">
-                        <label className="text-center mt-3 text-2xl">Título da Tarefa:</label>
-                        <input {...formulario.register('titulo')} type="text" className="w-full rounded-md border border-zinc-300 px-3 py-2 text-zinc-900 text-center" />
-                        {formulario.formState.errors.titulo && (
-                            <span className="text-red-500 text-xs absolute -bottom-4 left-0">{formulario.formState.errors.titulo.message}</span>
-                        )}
-                    </div>
-                    <div className="flex flex-col relative">
-                        <label className="text-center mt-3 text-2xl">Categoria da Tarefa:</label>
-                        <input {...formulario.register('categoria')} type="text" className="w-full rounded-md border border-zinc-300 px-3 py-2 text-zinc-900 text-center mt-1" />
-                        {formulario.formState.errors.categoria && (
-                            <span className="text-red-500 text-xs absolute -bottom-4 left-0">{formulario.formState.errors.categoria.message}</span>
-                        )}
-                    </div>
-                    <div className="flex gap-4 justify-end mt-4">
-                        <button type="reset" className="p-2 border border-zinc-600 hover:bg-zinc-200 rounded-sm">Reset</button>
-                        <button className="p-2 border border-zinc-600 rounded-sm bg-blue-600 hover:bg-blue-700 text-zinc-50">Enviar</button>
-                    </div>
-                </form>
-                <div className="flex gap-2 flex-col p-4">
-                    {tarefas.length > 0 && tarefas.map((tarefas, index) => {
-                        return (
-                            <>
-                                <div key={tarefas.id} className="flex items-center justify-between gap-2">
-                                    <p className={tarefas.concluido ? "line-through opacity-70" : ""}>{`Tarefa ${index + 1}: ${tarefas.titulo} - Categoria: ${tarefas.categoria}`}
-                                    </p>
+            <div className="w-full min-h-screen flex flex-col items-center bg-zinc-100 py-8">
+                <h1 className="text-2xl font-bold mb-2">Página de Controle de Tarefas</h1>
 
-                                    <div className="flex gap-2"><LuCheck style={{ cursor: "pointer" }} onClick={() => ajustarTarefa({ id: tarefas.id!, tipo: "ATUALIZAR" })} /><LuTrash style={{ cursor: "pointer" }} onClick={() => ajustarTarefa({ id: tarefas.id!, tipo: "EXCLUIR" })} />
+                <div className="flex gap-6 items-start">
+
+                    <div className="border border-zinc-300 bg-white p-12 mb-6 rounded-md w-[520px] box-border">
+                        <form onSubmit={formulario.handleSubmit(submeterTarefa)} className="flex flex-col gap-4 w-full">
+                            <div className="flex flex-col gap-1">
+                                <label className="text-sm font-medium text-zinc-700">Título da Tarefa:</label>
+                                <input {...formulario.register('titulo')} type="text" className="w-full border border-zinc-300 px-2 py-1 text-zinc-900" />
+                                {formulario.formState.errors.titulo && (
+                                    <p className="text-red-500 text-xs mt-2">{formulario.formState.errors.titulo.message}</p>
+                                )}
+                            </div>
+                            <div className="flex flex-col gap-1">
+                                <label className="text-sm font-medium text-zinc-700">Categoria da Tarefa:</label>
+                                <input {...formulario.register('categoria')} type="text" className="w-full border border-zinc-300 px-2 py-1 text-zinc-900 mt-1" />
+                                {formulario.formState.errors.categoria && (
+                                    <p className="text-red-500 text-xs mt-2">{formulario.formState.errors.categoria.message}</p>
+                                )}
+                            </div>
+                            <div className="flex gap-4 justify-end mt-4">
+                                <button type="reset" className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 transition font-medium">Reset</button>
+                                <button className="border border-zinc-400 px-4 py-1 bg-zinc-800 text-white">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div className="border border-zinc-300 bg-white p-4 w-[520px] box-border rounded-md">
+                        <h1 className="text-lg font-bold mb-2">Tarefas Cadastradas</h1>
+                        {tarefas.length > 0 && tarefas.map((tarefas, index) => {
+                            return (
+                                <>
+                                    <div key={tarefas.id} className="flex items-center justify-between gap-2">
+                                        <p className={tarefas.concluido ? "line-through opacity-70" : ""}>{`Tarefa ${index + 1}: ${tarefas.titulo} - Categoria: ${tarefas.categoria}`}
+                                        </p>
+
+                                        <div className="flex gap-2"><LuCheck style={{ cursor: "pointer" }} onClick={() => ajustarTarefa({ id: tarefas.id!, tipo: "ATUALIZAR" })} /><LuTrash style={{ cursor: "pointer" }} onClick={() => ajustarTarefa({ id: tarefas.id!, tipo: "EXCLUIR" })} />
+                                        </div>
                                     </div>
-                                </div>
-                            </>
-                        )
-                    })}
-                </div>
+                                </>
+                            )
+                        })}
+
+                    </div>
 
                 </div>
 

@@ -19,7 +19,7 @@ export function MoneyFlow() {
     const regrasFluxo = z.object({
         id: z.string().optional(),
         descricao: z.string().min(5, 'Campo obrigatório.'),
-        valor: z.coerce.number().positive('Campo obrigatório com valores positivos.'),
+        valor: z.coerce.number().positive('Campo obrigatório com valores positivos acima de 0.'),
         tipo: z.enum(['ENTRADA', 'SAIDA'])
     })
 
@@ -51,42 +51,45 @@ export function MoneyFlow() {
 
     return (
         <>
-            <div className="w-full h-screen flex flex-col items-center justify-center">
-                <h1 className="text-4xl text-center">Página de Controle de Fluxo Financeiro</h1>
-                <h1 className={`text-center text-4xl mt-5 ${saldo < 0 ? "text-red-500" : "text-green-600"}`}>Saldo: R$ {saldo.toFixed(2)}</h1>
-                
-                <div className="w-full max-w-xl bg-white shadow rounded-2xl p-6 mt-6 flex flex-col gap-4">
-                    <form onSubmit={formulario.handleSubmit(submeterFormulario)} className="flex flex-col gap-4">
+            <div className="w-full min-h-screen flex flex-col items-center bg-zinc-100 py-8">
+                <h1 className="text-3xl font-bold mb-2">Página de Controle de Fluxo Financeiro</h1>
+                <p className={`text-center text-xl mb-6 ${saldo < 0 ? "text-red-500" : "text-green-600"}`}>Saldo: <span className="font-semibold">R$ {saldo.toFixed(2)}</span></p>
+
+                <div className="flex gap-6 items-start">
+
+                <div className="border border-zinc-300 bg-white p-12 mb-6 rounded-md w-[520px] box-border">
+                    <form onSubmit={formulario.handleSubmit(submeterFormulario)} className="flex flex-col gap-7 w-full">
                     
-                    <div className="flex flex-col relative justify-center items-center gap-2">
+                    <div className="flex flex-col gap-1">
 
-                        <label className="text-center mt-3 text-2xl">Valor</label>
-                        <input type="number" step="0.01" {...formulario.register('valor')} className="w-full rounded-md border border-zinc-300 px-3 py-2 text-zinc-900 text-center" />{formulario.formState.errors.valor && <p className="text-red-500 text-xs mt-4 absolute -bottom-4 left-0">{formulario.formState.errors.valor.message}</p>}
-
-                    </div>
-                    <div className="flex flex-col relative justify-center items-center gap-2">
-
-                        <label className="text-center mt-3 text-2xl">Descrição</label>
-                        <input type="text" {...formulario.register('descricao')} className="w-full rounded-md border border-zinc-300 px-3 py-2 text-zinc-900 text-center" />{formulario.formState.errors.descricao && <p className="text-red-500 text-xs mt-2 absolute -bottom-4 left-0">{formulario.formState.errors.descricao.message}</p>}
+                        <label className="text-sm font-medium text-zinc-700">Valor</label>
+                        <input type="number" step="0.01" {...formulario.register('valor')} className="w-full border border-zinc-300 px-2 py-1 text-zinc-900" />{formulario.formState.errors.valor && <p className="text-red-500 text-xs mt-2">{formulario.formState.errors.valor.message}</p>}
 
                     </div>
-                    <div className="flex flex-col relative justify-center items-center gap-2">
+                    <div className="flex flex-col gap-1">
 
-                        <label className="text-center mt-3 text-2xl">Tipo</label>
-                        <select {...formulario.register('tipo')} className="w-full rounded-md border border-zinc-300 px-3 py-2 text-zinc-900 text-center">
+                        <label className="text-sm font-medium text-zinc-700">Descrição</label>
+                        <input type="text" {...formulario.register('descricao')} className="w-full border border-zinc-300 px-2 py-1 text-zinc-900" />{formulario.formState.errors.descricao && <p className="text-red-500 text-xs mt-2">{formulario.formState.errors.descricao.message}</p>}
+
+                    </div>
+                    <div className="flex flex-col gap-1">
+
+                        <label className="text-sm font-medium text-zinc-700">Tipo</label>
+                        <select {...formulario.register('tipo')} className="w-full border border-zinc-300 px-2 py-1 text-zinc-900">
                             <option value="ENTRADA">ENTRADA</option>
                             <option value="SAIDA">SAIDA</option>
-                        </select>{formulario.formState.errors.tipo && <p className="text-red-500 text-xs mt-2 absolute -bottom-4 left-0">{formulario.formState.errors.tipo.message}</p>}
+                        </select>{formulario.formState.errors.tipo && <p className="text-red-500 text-xs mt-2">{formulario.formState.errors.tipo.message}</p>}
 
 
                     </div>
                     <div className="flex justify-end mt-5">
-                    <button className="max-w-24 px-1 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition font-medium" type="submit">Cadastrar</button>
+                    <button className="border border-zinc-400 px-4 py-1 bg-zinc-800 text-white cursor-pointer" type="submit">Cadastrar</button>
 
                     </div>
                     </form>
                 </div>
-                <div className="flex gap-2 flex-col p-4">
+                <div className="border border-zinc-300 bg-white p-4 w-[520px] box-border rounded-md">
+                    <h1 className="text-xl font-bold mb-4">Histórico de Movimentações</h1>
                    {valores.length > 0 && valores.map((valores, index) => {
                     return (
                         <>
@@ -98,6 +101,8 @@ export function MoneyFlow() {
                     )
                    })}
                 </div>
+                </div>
+                
 
             </div>
         </>
