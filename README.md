@@ -92,7 +92,7 @@ O projeto tem como objetivo consolidar conhecimentos em:
 - Organização de projeto
 - Planejamento ágil
 
-###Créditos
+### Créditos
 
 Feito por João Pedro Luciano da Silva
 
