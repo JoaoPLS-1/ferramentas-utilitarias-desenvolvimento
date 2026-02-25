@@ -1,101 +1,72 @@
 # Portal de Ferramentas Utilitárias
 
-## 📌 Visão do Produto
+## Sobre o projeto
 
-O Portal de Ferramentas Utilitárias é uma aplicação web desenvolvida com o objetivo de reunir ferramentas simples e práticas para organização pessoal e controle de informações. 
+Este projeto consiste em um portal com três ferramentas principais:
 
-O sistema permite ao utilizador:
+- Lista de tarefas (TaskMaster)
+- Cadastro de contatos (ConnectHub)
+- Controle financeiro simples (MoneyFlow)
 
-- Organizar tarefas diárias
-- Cadastrar contactos
-- Controlar entradas e saídas financeiras
-- Visualizar saldo atualizado automaticamente
-
-A aplicação foi construída com foco em tipagem forte, validação de dados e persistência local, garantindo que as informações permaneçam salvas mesmo após o recarregamento da página.
+O objetivo foi desenvolver uma aplicação utilizando React com TypeScript, aplicando validações, organização de código e persistência de dados no localStorage.
 
 ---
 
-## 🛠️ Stack Tecnológica
+## Tecnologias utilizadas
 
-- **React (Vite) + TypeScript**
-- **TailwindCSS**
-- **React Hook Form**
-- **Zod + @hookform/resolvers**
-- **React Router Dom**
-- **LocalStorage API**
-
----
-
-## 📂 Estrutura do Projeto
-
-```
-src/
-├── components/   # Componentes reutilizáveis (Button, Header, Navbar)
-├── pages/        # Páginas principais (Home, TaskMaster, ConnectHub, MoneyFlow)
-└── App.tsx
-```
+- React (Vite)
+- TypeScript
+- TailwindCSS
+- React Hook Form
+- Zod
+- React Router Dom
+- LocalStorage
 
 ---
 
-## 📍 Módulos da Aplicação
+## Funcionalidades
 
-### 🏠 Home
-Página inicial com navegação para os três módulos principais.
+### Home
+Página inicial com navegação para os módulos do sistema.
 
----
-
-### ✅ TaskMaster (ToDo List)
-- Adição de tarefas
+### TaskMaster
+- Cadastro de tarefas
+- Validação de título (mínimo 5 caracteres)
 - Listagem dinâmica
 - Remoção de tarefas
 - Marcação como concluída
-- Persistência automática no localStorage
-- Validação: Título mínimo de 5 caracteres
+- Salvamento automático no localStorage
 
----
-
-### 📇 ConnectHub (Cadastro de Contatos)
-- Cadastro de nome completo
+### ConnectHub
+- Cadastro de nome, e-mail e telefone
 - Validação de e-mail
-- Validação de telefone (apenas números)
-- Persistência opcional no localStorage
+- Telefone aceitando apenas números
 
----
-
-### 💰 MoneyFlow (Controle Financeiro)
+### MoneyFlow
 - Registro de entradas e saídas
 - Validação de valor positivo
-- Cálculo automático do saldo total
+- Cálculo automático do saldo
 - Persistência no localStorage
 
 ---
 
-## 📈 Metodologias Ágeis
+## Organização
 
-Este projeto foi estruturado simulando uma Sprint real, incluindo:
+Estrutura de pastas utilizada:
 
-- Definição de User Stories (Issues)
-- Critérios de Aceitação
-- Organização por Milestones
-- Planejamento incremental das funcionalidades
-
----
-
-## 🎯 Objetivo Acadêmico
-
-O projeto tem como objetivo consolidar conhecimentos em:
-
-- Componentização
-- Tipagem com TypeScript
-- Validação de formulários
-- Persistência de dados
-- Organização de projeto
-- Planejamento ágil
+```
+src/
+├── components/
+├── pages/
+├── schemas/
+└── App.tsx
+```
 
 ### Créditos
+
 
 Feito por João Pedro Luciano da Silva
 
 ---
 
-Desenvolvido para fins acadêmicos.
+Projeto desenvolvido como atividade acadêmica.
