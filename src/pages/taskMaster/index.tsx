@@ -64,34 +64,27 @@ export function TaskMaster() {
 
     return (
         <>
-            <nav className="bg-cyan-900 h-16 flex items-center justify-between px-8 text-zinc-100">
-                <h1>TaskMaster</h1>
-                <ul className="flex gap-6">
-                    <li><NavLink to={'/'}>Home</NavLink></li>
-                    <li><NavLink to={'/connectHub'}>ConnectHub</NavLink></li>
-                    <li><NavLink to={'/moneyFlow'}>MoneyFlow</NavLink></li>
-
-                </ul>
-            </nav>
             <div className="w-full h-screen flex items-center justify-center flex-col">
+                <div className="w-full max-w-xl bg-white shadow rounded-2xl p-6 mt-6 flex flex-col gap-4">
+                <h1 className="text-4xl text-center">Página de Controle de Tarefas</h1>
                 <form onSubmit={formulario.handleSubmit(submeterTarefa)} className="flex flex-col gap-4">
                     <div className="flex flex-col relative">
-                        <label>Título da Tarefa:</label>
-                        <input {...formulario.register('titulo')} type="text" className="border border-solid border-gray-400 text-zinc-900 max-w-100 rounded-sm px-2 py-1" />
+                        <label className="text-center mt-3 text-2xl">Título da Tarefa:</label>
+                        <input {...formulario.register('titulo')} type="text" className="w-full rounded-md border border-zinc-300 px-3 py-2 text-zinc-900 text-center" />
                         {formulario.formState.errors.titulo && (
                             <span className="text-red-500 text-xs absolute -bottom-4 left-0">{formulario.formState.errors.titulo.message}</span>
                         )}
                     </div>
                     <div className="flex flex-col relative">
-                        <label>Categoria da Tarefa:</label>
-                        <input {...formulario.register('categoria')} type="text" className="border border-solid border-gray-400 text-zinc-900 max-w-100 rounded-sm px-2 py-1" />
+                        <label className="text-center mt-3 text-2xl">Categoria da Tarefa:</label>
+                        <input {...formulario.register('categoria')} type="text" className="w-full rounded-md border border-zinc-300 px-3 py-2 text-zinc-900 text-center mt-1" />
                         {formulario.formState.errors.categoria && (
                             <span className="text-red-500 text-xs absolute -bottom-4 left-0">{formulario.formState.errors.categoria.message}</span>
                         )}
                     </div>
-                    <div className="flex max-w-100 gap-4 justify-center mt-4">
-                        <button type="reset" className="p-2 border border-zinc-600 rounded-sm">Reset</button>
-                        <button className="p-2 border border-zinc-600 rounded-sm bg-zinc-900 text-zinc-50">Enviar</button>
+                    <div className="flex gap-4 justify-end mt-4">
+                        <button type="reset" className="p-2 border border-zinc-600 hover:bg-zinc-200 rounded-sm">Reset</button>
+                        <button className="p-2 border border-zinc-600 rounded-sm bg-blue-600 hover:bg-blue-700 text-zinc-50">Enviar</button>
                     </div>
                 </form>
                 <div className="flex gap-2 flex-col p-4">
@@ -108,6 +101,8 @@ export function TaskMaster() {
                             </>
                         )
                     })}
+                </div>
+
                 </div>
 
 

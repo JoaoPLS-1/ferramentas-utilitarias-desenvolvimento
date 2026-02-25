@@ -3,10 +3,12 @@ import { Home } from './pages/home'
 import { TaskMaster } from './pages/taskMaster'
 import { ConnectHub } from './pages/connectHub/indexConnect'
 import { MoneyFlow } from './pages/moneyFlow/indexMoney'
+import { Header} from './assets/components/header'
 export function App() {
 
     return (
         <BrowserRouter>
+        <Header />
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/taskMaster' element={<TaskMaster />} />
